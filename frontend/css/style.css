@@ -1,0 +1,218 @@
+/* ===============================
+   GLOBAL CYBER BACKGROUND
+=============================== */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f1a;
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Moving grid */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background:
+    linear-gradient(transparent 95%, rgba(0,242,255,0.12) 100%),
+    linear-gradient(90deg, transparent 95%, rgba(0,242,255,0.12) 100%);
+  background-size: 60px 60px;
+  animation: moveGrid 12s linear infinite;
+  z-index: -3;
+}
+
+@keyframes moveGrid {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-60px, -60px); }
+}
+
+/* Glow pulse */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(0,242,255,0.25), transparent 50%);
+  animation: pulseGlow 6s infinite alternate;
+  z-index: -2;
+}
+
+@keyframes pulseGlow {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+/* ===============================
+   LAYOUT
+=============================== */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===============================
+   SIDEBAR
+=============================== */
+
+.sidebar {
+  width: 240px;
+  background: rgba(17,17,34,0.9);
+  padding: 30px 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,242,255,0.3);
+}
+
+.sidebar h2 {
+  color: #00f2ff;
+  text-shadow: 0 0 10px #00f2ff;
+  margin-bottom: 40px;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #aaa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(0,242,255,0.15);
+  color: #00f2ff;
+  box-shadow: 0 0 15px #00f2ff;
+}
+
+/* ===============================
+   CONTENT
+=============================== */
+
+.content {
+  flex: 1;
+  padding: 50px;
+}
+
+/* Typing effect title */
+.typing-title {
+  font-size: 28px;
+  color: #00f2ff;
+  text-shadow: 0 0 10px #00f2ff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #00f2ff;
+  width: 0;
+  animation: typing 2.5s steps(20) forwards, blink 0.8s infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* ===============================
+   CARDS
+=============================== */
+
+.card {
+  background: rgba(26,26,46,0.9);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 20px rgba(0,242,255,0.3);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px #00f2ff;
+  transform: translateY(-5px);
+}
+
+/* ===============================
+   INPUTS
+=============================== */
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0f0f1a;
+  color: white;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #00f2ff;
+  box-shadow: 0 0 10px #00f2ff;
+}
+
+/* ===============================
+   BUTTONS
+=============================== */
+
+button {
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  background: #00f2ff;
+  color: #0f0f1a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00c3ff;
+  box-shadow: 0 0 20px #00f2ff;
+  transform: scale(1.05);
+}
+
+/* ===============================
+   TABLE
+=============================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #222;
+}
+
+th {
+  color: #00f2ff;
+}
+
+/* ===============================
+   SCAN LINE (GLOBAL)
+=============================== */
+
+.scan-line {
+  position: fixed;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #00f2ff, transparent);
+  top: -5%;
+  animation: scanMove 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes scanMove {
+  from { top: -5%; }
+  to { top: 105%; }
+}
